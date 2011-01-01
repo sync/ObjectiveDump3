@@ -1,0 +1,27 @@
+[submodule "Source/External/asihttprequest"]
+	path = Source/External/asihttprequest
+	url = git://github.com/pokeb/asi-http-request.git
+[submodule "Source/External/json-framework"]
+	path = Source/External/json-framework
+	url = git://github.com/stig/json-framework
+[submodule "Source/External/MBProgressHUD"]
+	path = Source/External/MBProgressHUD
+	url = git://github.com/sync/MBProgressHUD.git
+[submodule "Source/External/NSDate-Extensions"]
+	path = Source/External/NSDate-Extensions
+	url = git://github.com/sync/NSDate-Extensions.git
+[submodule "Source/External/EGOImageLoading"]
+	path = Source/External/EGOImageLoading
+	url = git://github.com/enormego/EGOImageLoading.git
+[submodule "Source/External/PlainOAuth"]
+	path = Source/External/PlainOAuth
+	url = git://github.com/jaanus/PlainOAuth.git
+[submodule "Source/External/facebook-ios-sdk"]
+	path = Source/External/facebook-ios-sdk
+	url = git://github.com/facebook/facebook-ios-sdk.git
+[submodule "Source/External/MTStatusBarOverlay"]
+	path = Source/External/MTStatusBarOverlay
+	url = git://github.com/myell0w/MTStatusBarOverlay.git
+[submodule "Source/External/objectivesupport"]
+	path = Source/External/objectivesupport
+	url = git://github.com/yfactorial/objectivesupport.git
