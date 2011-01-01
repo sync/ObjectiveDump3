@@ -1,4 +1,5 @@
 #import "BaseASIServices.h"
+#import "BaseASIServices+Utils.h"
 
 @implementation BaseASIServices
 
@@ -41,12 +42,6 @@
 	ASIHTTPRequest *request = [self requestWithUrl:url];
 	request.userInfo = userInfo;
 	request.delegate = self;
-	
-	if ([path isEqualToString:@"pois"]) {
-		DLog(@"fetch canceled forUrl: %@", self.lastPoisRequest.originalURL);
-		[self.lastPoisRequest clearDelegatesAndCancel];
-		self.lastPoisRequest = request;
-	}
 	
 	[self.networkQueue addOperation:request];
 	[self.networkQueue go];
