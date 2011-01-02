@@ -144,14 +144,6 @@
 }
 
 #pragma mark -
-#pragma mark Network Availability
-
-- (BOOL)isNetworkReachable
-{
-	return ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != kNotReachable);	
-}
-
-#pragma mark -
 #pragma mark Core Location
 
 - (void)locationDidFix

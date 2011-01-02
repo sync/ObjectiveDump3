@@ -18,6 +18,4 @@
 @property (nonatomic, retain) MBProgressHUD *loadingView;
 @property (nonatomic, retain) MBProgressHUD *noResultsView;
 
-@property (nonatomic, readonly) BOOL isNetworkReachable;
-
 @end
