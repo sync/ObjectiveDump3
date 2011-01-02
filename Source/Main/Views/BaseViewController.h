@@ -10,6 +10,9 @@
 - (void)setupNavigationBar;
 - (void)setupToolbar;
 
+- (void)locationDidFix;
+- (void)locationDidStop;
+
 - (void)shouldReloadContent:(NSNotification *)notification;
 
 @property (nonatomic, retain) MBProgressHUD *loadingView;

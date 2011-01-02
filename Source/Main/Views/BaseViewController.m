@@ -41,6 +41,9 @@
 	
 	[self setupNavigationBar];
 	[self setupToolbar];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationDidFix) name:GPSLocationDidFix object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationDidStop) name:GPSLocationDidStop object:nil];
 }
 
 #pragma mark -
@@ -149,6 +152,19 @@
 }
 
 #pragma mark -
+#pragma mark Core Location
+
+- (void)locationDidFix
+{
+	
+}
+
+- (void)locationDidStop
+{
+	
+}
+
+#pragma mark -
 #pragma mark Memory
 
 - (void)didReceiveMemoryWarning {
@@ -172,6 +188,8 @@
 }
 
 - (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+
 	noResultsView.delegate = nil;
 	[noResultsView release];
 	loadingView.delegate = nil;
