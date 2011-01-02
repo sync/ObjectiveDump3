@@ -24,4 +24,4 @@
 	url = git://github.com/myell0w/MTStatusBarOverlay.git
 [submodule "Source/External/objectivesupport"]
 	path = Source/External/objectivesupport
-	url = git://github.com/yfactorial/objectivesupport.git
+	url = git://github.com/sync/objectivesupport.git
