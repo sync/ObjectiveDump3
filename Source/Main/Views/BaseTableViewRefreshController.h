@@ -2,13 +2,12 @@
 #import "BaseTableViewController.h"
 #import "EGORefreshTableHeaderView.h"
 
-@interface BaseTableViewRefreshController : BaseTableViewController {
+@interface BaseTableViewRefreshController : BaseTableViewController <EGORefreshTableHeaderDelegate> {
 
 }
 
 @property (nonatomic, readonly) EGORefreshTableHeaderView *refreshHeaderView;
 
-- (void)showRefreshHeaderView;
 - (void)hideRefreshHeaderView;
 
 @end
