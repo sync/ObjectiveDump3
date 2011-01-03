@@ -5,7 +5,6 @@
 #import "BaseLoadingViewCenter.h"
 #import "JSON.h"
 #import "NSObject+Extensions.h"
-#import "NSDataAdditions.h"
 #import "NSObject+JSONSerializableSupport.h"
 #import "ObjectiveResourceDateFormatter.h"
 
