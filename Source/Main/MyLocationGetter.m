@@ -66,7 +66,7 @@
 	if ([error code] == kCLErrorDenied) {
 		// should stop looking for coordinates
 		[self.locationManager stopUpdatingLocation];
-		[[NSNotificationCenter defaultCenter] postNotificationName:ShouldStopGPSLocationFix object:nil userInfo:nil];
+		[[NSNotificationCenter defaultCenter] postNotificationName:GPSLocationDidStop object:nil userInfo:nil];
 	}
 }
 
