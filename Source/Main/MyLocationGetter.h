@@ -2,8 +2,8 @@
 #import <CoreLocation/CoreLocation.h>
 
 // GPS
-#define ShouldStopGPSLocationFix @"ShouldStopGPSLocationFix"
 #define GPSLocationDidFix @"GPSLocationDidFix"
+#define GPSLocationDidStop @"GPSLocationDidStop"
 
 @interface MyLocationGetter : NSObject <CLLocationManagerDelegate> {
 	
