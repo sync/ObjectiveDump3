@@ -54,7 +54,7 @@
 
 - (void)fetchStarted:(ASIHTTPRequest *)request
 {	
-	DLog(@"fetch started for url: %@", request.url);
+	DLog(@"fetch started for url:%@", request.url);
 }
 
 - (void)fetchCompleted:(ASIHTTPRequest *)request
@@ -72,7 +72,7 @@
 		}
 	}
 	
-	DLog(@"fetch completed forUrl:%@ error:%@", request.originalURL, [request.error localizedDescription]);
+	DLog(@"fetch completed for url:%@ error:%@", request.originalURL, [request.error localizedDescription]);
 }
 
 - (void)fetchFailed:(ASIHTTPRequest *)request
