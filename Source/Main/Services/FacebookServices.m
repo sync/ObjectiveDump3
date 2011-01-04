@@ -18,8 +18,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(FacebookServices)
 - (BOOL)authorize
 {
 	if (![self.facebook isSessionValid]) {
-		// TODO
-		//[self.facebook authorize:FacebookApplicationId permissions:[NSArray arrayWithObjects:@"publish_stream", @"offline_access", @"user_about_me", @"user_photos", nil] delegate:self];
+		[self.facebook authorize:FacebookApplicationId permissions:[NSArray arrayWithObjects:@"publish_stream", @"offline_access", @"user_about_me", @"user_photos", nil] delegate:self];
 		return FALSE;
 	}
 	
