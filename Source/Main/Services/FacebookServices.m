@@ -70,8 +70,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(FacebookServices)
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook Pictures" 
 													message:@"Would you like to submit your Facebook profile picture to be voted on?"
 												   delegate:self 
-										  cancelButtonTitle:@"NO" 
-										  otherButtonTitles:@"YES", nil];
+										  cancelButtonTitle:@"No" 
+										  otherButtonTitles:@"Yes", nil];
 	[alert show];	
 	[alert release];
 }
