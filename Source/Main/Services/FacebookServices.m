@@ -15,24 +15,19 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(FacebookServices)
 	return facebook;
 }
 
-- (BOOL)authorize
+- (void)authorizeForPermissions:(NSArray *)permissions
 {
-	if (![self.facebook isSessionValid]) {
-		[self.facebook authorize:FacebookApplicationId permissions:[NSArray arrayWithObjects:@"publish_stream", @"offline_access", @"user_about_me", @"user_photos", nil] delegate:self];
-		return FALSE;
-	}
-	
-	return TRUE;
+	[self.facebook authorize:FacebookApplicationId permissions:permissions delegate:self];
 }
 
 #pragma mark -
 #pragma mark FBSessionDelegate
 
-- (void)fbDidLogin;
+- (void)fbDidLoginWithPermissions:(NSArray *)permissions;
 {
 	DLog(@"Facebook accessToken: %@", self.facebook.accessToken);
 	
-	[APIServices sharedAPIServices].facbookAuthorized = TRUE;
+	[[APIServices sharedAPIServices]setFacebookAuthorizedForPemissions:permissions remove:FALSE];
 	
 	[[APIServices sharedAPIServices]registerWithAuthority:@"facebook" 
 											  deviceToken:nil 
@@ -41,24 +36,25 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(FacebookServices)
 												   secret:nil];
 	
 	if (![APIServices sharedAPIServices].hasUsePictureKey) {
+		// Todo
 		[self askToSharePictures];
 	}
 	
 	[[NSNotificationCenter defaultCenter]postNotificationName:FacebookNotification object:@"success"];
 }
 
-- (void)fbDidNotLogin:(BOOL)cancelled;
+- (void)fbDidNotLogin:(BOOL)cancelled permissions:(NSArray *)permissions;
 {
 	DLog(@"Facebook did not login");
 	
-	[APIServices sharedAPIServices].facbookAuthorized = FALSE;
+	[[APIServices sharedAPIServices]setFacebookAuthorizedForPemissions:permissions remove:TRUE];
 	
 	[[NSNotificationCenter defaultCenter]postNotificationName:FacebookNotification object:@"Unable to login to Facebook"];
 }
 
 - (void)fbDidLogout
 {
-	[APIServices sharedAPIServices].facbookAuthorized = FALSE;
+	[[APIServices sharedAPIServices]removeAllFacebookAuthorizedPermissions];
 	DLog(@"Facebook did logout");
 }
 
@@ -78,6 +74,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(FacebookServices)
 
 #pragma mark -
 #pragma mark UIAlertViewDelegate
+
+// TODO 
+//For allowing sharing of profile photo:
+//offline_access,user_photos
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	switch (buttonIndex) {

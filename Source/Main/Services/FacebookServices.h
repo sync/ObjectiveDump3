@@ -9,7 +9,7 @@
 
 + (FacebookServices *)sharedFacebookServices;
 
-- (BOOL)authorize;
+- (void)authorizeForPermissions:(NSArray *)permission;
 - (void)askToSharePictures;
 
 @end
