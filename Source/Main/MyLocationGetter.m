@@ -4,7 +4,6 @@
 
 @synthesize locationManager;
 
-
 - (CLLocationManager *)locationManager
 {
 	if (!locationManager) {
@@ -21,12 +20,14 @@
 
 - (void)startUpdates
 {	
-    if ([CLLocationManager respondsToSelector:@selector(significantLocationChangeMonitoringAvailable)] &&
+   [[BaseLoadingViewCenter sharedBaseLoadingViewCenter]didStartLoadingForKey:GPSLocationFinding];
+	
+	if ([CLLocationManager respondsToSelector:@selector(significantLocationChangeMonitoringAvailable)] &&
 		[CLLocationManager significantLocationChangeMonitoringAvailable]) {
 		[self.locationManager startMonitoringSignificantLocationChanges];
 	} else {
 		[self.locationManager startUpdatingLocation];
-	}	
+	}
 }
 
 - (void)stopUpdates
@@ -36,6 +37,7 @@
 	} else {
 		[self.locationManager stopUpdatingLocation];
 	}
+	[[BaseLoadingViewCenter sharedBaseLoadingViewCenter]didStopLoadingForKey:GPSLocationFinding];
 }
 
 
@@ -49,6 +51,9 @@
 		// Invalid coordinate
 		return;
 	}
+	
+	[[BaseLoadingViewCenter sharedBaseLoadingViewCenter]didStopLoadingForKey:GPSLocationFinding];
+	
 	NSDate* eventDate = newLocation.timestamp;
 	NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
 	if (howRecent <= -(5.0))

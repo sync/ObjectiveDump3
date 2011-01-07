@@ -4,10 +4,9 @@
 // GPS
 #define GPSLocationDidFix @"GPSLocationDidFix"
 #define GPSLocationDidStop @"GPSLocationDidStop"
+#define GPSLocationFinding @"GPSLocationFinding"
 
 @interface MyLocationGetter : NSObject <CLLocationManagerDelegate> {
-	
-	CLLocationManager *locationManager;
 }
 
 @property (nonatomic, readonly) CLLocationManager *locationManager;
