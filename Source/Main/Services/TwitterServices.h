@@ -2,6 +2,9 @@
 #import "OAuth.h"
 #import "CustomLoginPopup.h"
 
+#define TwitterNotification @"TwitterDidLoginNotification"
+#define TwitterAuthorizedUserDefaults @"TwitterAuthorizedUserDefaults"
+
 @interface TwitterServices : NSObject <TwitterLoginPopupDelegate, TwitterLoginUiFeedback> {
 
 }
@@ -12,5 +15,8 @@
 + (TwitterServices *)sharedTwitterServices;
 
 - (BOOL)authorizeInNavController:(UINavigationController *)navController;
+
+// defaults
+@property (nonatomic) BOOL twitterAuthorized;
 
 @end

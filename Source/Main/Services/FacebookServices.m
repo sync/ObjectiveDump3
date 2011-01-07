@@ -27,71 +27,66 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(FacebookServices)
 {
 	DLog(@"Facebook accessToken: %@", self.facebook.accessToken);
 	
-	[[APIServices sharedAPIServices]setFacebookAuthorizedForPemissions:permissions remove:FALSE];
-	
-	[[APIServices sharedAPIServices]registerWithAuthority:@"facebook" 
-											  deviceToken:nil 
-											  accessToken:self.facebook.accessToken
-													  key:nil 
-												   secret:nil];
-	
-	if (![APIServices sharedAPIServices].hasUsePictureKey) {
-		// Todo
-		[self askToSharePictures];
-	}
-	
-	[[NSNotificationCenter defaultCenter]postNotificationName:FacebookNotification object:@"success"];
+	NSDictionary *infoDict = [NSDictionary dictionaryWithObjectsAndKeys:
+							  [NSNumber numberWithBool:TRUE], @"success",
+							  permissions, @"permissions",
+							  nil];
+	[[NSNotificationCenter defaultCenter]postNotificationName:FacebookNotification object:infoDict];
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled permissions:(NSArray *)permissions;
 {
 	DLog(@"Facebook did not login");
 	
-	[[APIServices sharedAPIServices]setFacebookAuthorizedForPemissions:permissions remove:TRUE];
-	
-	[[NSNotificationCenter defaultCenter]postNotificationName:FacebookNotification object:@"Unable to login to Facebook"];
+	NSDictionary *infoDict = [NSDictionary dictionaryWithObjectsAndKeys:
+							  [NSNumber numberWithBool:FALSE], @"success",
+							  permissions, @"permissions",
+							  nil];
+	[[NSNotificationCenter defaultCenter]postNotificationName:FacebookNotification object:infoDict];
 }
 
 - (void)fbDidLogout
 {
-	[[APIServices sharedAPIServices]removeAllFacebookAuthorizedPermissions];
 	DLog(@"Facebook did logout");
+	
+	[self removeAllFacebookAuthorizedPermissions];
 }
 
 #pragma mark -
-#pragma mark PictureSharing
+#pragma mark Defaults
 
-- (void)askToSharePictures
-{	
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook Pictures" 
-													message:@"Would you like to submit your Facebook profile picture to be voted on?"
-												   delegate:self 
-										  cancelButtonTitle:@"No" 
-										  otherButtonTitles:@"Yes", nil];
-	[alert show];	
-	[alert release];
-}
-
-#pragma mark -
-#pragma mark UIAlertViewDelegate
-
-// TODO 
-//For allowing sharing of profile photo:
-//offline_access,user_photos
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-	switch (buttonIndex) {
-		case 0: {
-			break;
+- (BOOL)facebookAuthorizedForPermissions:(NSArray *)permissions
+{
+	NSArray *currentPermissions = [[NSUserDefaults standardUserDefaults]objectForKey:FacebookAuthorizedPermissionsUserDefaults];
+	BOOL authorized = TRUE;
+	for (NSString *permission in permissions) {
+		if (![currentPermissions containsObject:permission]) {
+			authorized = FALSE;
 		}
-		case 1: {
-			[APIServices sharedAPIServices].usePicture = TRUE;
-			[[AppDelegate sharedAppDelegate]checkPreferences];
-			break;
-		}
-		default:
-			break;
 	}
+	return authorized;
+}
+
+- (void)setFacebookAuthorizedForPemissions:(NSArray *)permissions remove:(BOOL)remove
+{
+	NSMutableSet *currentPermissions = [NSMutableSet setWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:FacebookAuthorizedPermissionsUserDefaults]];
+	
+	for (NSString *permission in permissions) {
+		if (remove) {
+			[currentPermissions removeObject:permission];
+		} else {
+			[currentPermissions addObject:permission];
+		}
+	}
+	
+	[[NSUserDefaults standardUserDefaults]setObject:currentPermissions.allObjects forKey:FacebookAuthorizedPermissionsUserDefaults];
+	[[NSUserDefaults standardUserDefaults]synchronize];
+}
+
+- (void)removeAllFacebookAuthorizedPermissions
+{
+	[[NSUserDefaults standardUserDefaults]removeObjectForKey:FacebookAuthorizedPermissionsUserDefaults];
+	[[NSUserDefaults standardUserDefaults]synchronize];
 }
 
 #pragma mark -

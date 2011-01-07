@@ -47,7 +47,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(TwitterServices)
     [self.loginPopup dismissModalViewControllerAnimated:YES];        
     [loginPopup release]; loginPopup = nil; // was retained as ivar in "login"
 	
-	[APIServices sharedAPIServices].twitterAuthorized = FALSE;
+	self.twitterAuthorized = FALSE;
 	[[NSNotificationCenter defaultCenter]postNotificationName:TwitterNotification object:@"Unable to login to Twitter"];
 }
 
@@ -86,24 +86,36 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(TwitterServices)
 
     [loginPopup.activityIndicator stopAnimating];
 	
-	[APIServices sharedAPIServices].twitterAuthorized = TRUE;
 	
-	[[APIServices sharedAPIServices]registerWithAuthority:@"twitter" 
-											  deviceToken:nil 
-											  accessToken:nil
-													  key:self.oAuth.oauth_token 
-												   secret:self.oAuth.oauth_token_secret];
 	
-	[[NSNotificationCenter defaultCenter]postNotificationName:TwitterNotification object:@"success"];
+	NSDictionary *infoDict = [NSDictionary dictionaryWithObjectsAndKeys:
+							  [NSNumber numberWithBool:TRUE], @"success",
+							  nil];
+	[[NSNotificationCenter defaultCenter]postNotificationName:TwitterNotification object:infoDict];
 }
 
 - (void) authorizationRequestDidFail:(TwitterLoginPopup *)twitterLogin {
     DLog(@"token request did fail");
     [loginPopup.activityIndicator stopAnimating];
 	
-	[APIServices sharedAPIServices].twitterAuthorized = FALSE;
-	
-	[[NSNotificationCenter defaultCenter]postNotificationName:TwitterNotification object:@"Unable to login to Twitter"];
+	NSDictionary *infoDict = [NSDictionary dictionaryWithObjectsAndKeys:
+							  [NSNumber numberWithBool:FALSE], @"success",
+							  nil];
+	[[NSNotificationCenter defaultCenter]postNotificationName:TwitterNotification object:infoDict];
+}
+
+#pragma mark -
+#pragma mark twitterAuthorized
+
+- (BOOL)twitterAuthorized
+{
+	return [[NSUserDefaults standardUserDefaults]boolForKey:TwitterAuthorizedUserDefaults];
+}
+
+- (void)setTwitterAuthorized:(BOOL)twitterAuthorized
+{
+	[[NSUserDefaults standardUserDefaults]setBool:twitterAuthorized forKey:TwitterAuthorizedUserDefaults];
+	[[NSUserDefaults standardUserDefaults]synchronize];
 }
 
 - (void)dealloc {
