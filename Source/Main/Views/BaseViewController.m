@@ -47,6 +47,14 @@
 }
 
 #pragma mark -
+#pragma mark CustomNavigationBar
+
+- (CustomNavigationBar *)customNavigationBar
+{
+	return (CustomNavigationBar *)self.navigationController.navigationBar;
+}
+
+#pragma mark -
 #pragma mark Setup
 
 - (void)setupNavigationBar
