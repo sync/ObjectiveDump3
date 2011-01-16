@@ -28,3 +28,6 @@
 [submodule "Source/External/EGOTableViewPullRefresh"]
 	path = Source/External/EGOTableViewPullRefresh
 	url = git://github.com/enormego/EGOTableViewPullRefresh.git
+[submodule "UIColor-i7HexColor"]
+	path = UIColor-i7HexColor
+	url = https://github.com/jonasschnelli/UIColor-i7HexColor.git
