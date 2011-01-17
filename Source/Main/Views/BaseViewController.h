@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "MBProgressHUD.h"
 #import "BaseLoadingViewCenter.h"
-#import "UINavigationController+CustomNavigationBar.h"
+#import "UINavigationController+Custom.h"
 
 @interface BaseViewController : UIViewController <BaseLoadingViewCenterDelegate, MBProgressHUDDelegate>{
 }

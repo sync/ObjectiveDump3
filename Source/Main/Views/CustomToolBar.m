@@ -1,13 +1,13 @@
-#import "CustomNavigationBar.h"
+#import "CustomToolBar.h"
 
-@interface CustomNavigationBar () 
+@interface CustomToolBar () 
 
 @property (nonatomic, readonly) NSMutableDictionary *backgroundImagesDict;
 - (void)setupCustomInitialisation;
 
 @end
 
-@implementation CustomNavigationBar
+@implementation CustomToolBar
 
 @synthesize backgroundImagesDict;
 
@@ -85,42 +85,6 @@
 }
 
 #pragma mark -
-#pragma mark BackButton
-
-// Given the prpoer images and cap width, create a variable width back button
-+ (UIButton *)customBackButtonForBackgroundImage:(UIImage*)backgroundImage 
-								highlightedImage:(UIImage*)highlightedImage 
-									leftCapWidth:(CGFloat)leftCapWidth
-										   title:(NSString *)title
-											font:(UIFont *)font
-{
-	backgroundImage = [backgroundImage stretchableImageWithLeftCapWidth:leftCapWidth topCapHeight:0.0];
-	highlightedImage = [highlightedImage stretchableImageWithLeftCapWidth:leftCapWidth topCapHeight:0.0];
-
-	UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
-	
-	button.titleEdgeInsets = UIEdgeInsetsMake(0, leftCapWidth, 0, 3.0);
-	button.titleLabel.font = (font) ? font : [UIFont boldSystemFontOfSize:[UIFont smallSystemFontSize]];
-	[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-	button.titleLabel.shadowOffset = CGSizeMake(0,-1);
-	[button setTitleShadowColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-	button.titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
-	
-	[button setBackgroundImage:backgroundImage forState:UIControlStateNormal];
-	[button setBackgroundImage:highlightedImage forState:UIControlStateHighlighted];
-	
-	CGSize textSize = [title sizeWithFont:button.titleLabel.font];
-	button.frame = CGRectMake(button.frame.origin.x, 
-							  button.frame.origin.y, 
-							  textSize.width + leftCapWidth + 3.0 + 5.0, 
-							  backgroundImage.size.height);
-	
-	[button setTitle:title forState:UIControlStateNormal];
-	
-	return button;
-}
-
-#pragma mark -
 #pragma mark Dealloc
 
 - (void)dealloc {
@@ -128,6 +92,5 @@
 	
     [super dealloc];
 }
-
 
 @end
