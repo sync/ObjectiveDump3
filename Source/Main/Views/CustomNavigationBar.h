@@ -13,14 +13,10 @@
 - (void)setBackgroundImage:(UIImage *)backgroundImage forBarStyle:(UIBarStyle)aBarStyle;
 - (void)clearBackground;
 
-- (UIImage *)backButtonBackgroundImageForStyle:(UIBarStyle)aBarStyle;
-- (void)setBackButtonBackgroundImage:(UIImage *)backgroundImage forBarStyle:(UIBarStyle)aBarStyle;
-- (void)clearBackButtonBackground;
-
-- (UIBarButtonItem *)backButtonForBackground:(UIImage*)backgroundImage 
-							highlightedImage:(UIImage*)highlightedImage 
-								leftCapWidth:(CGFloat)leftCapWidth
-									  target:(id)target
-									  action:(SEL)action;
++ (UIButton *)customBackButtonForBackgroundImage:(UIImage*)backgroundImage 
+								highlightedImage:(UIImage*)highlightedImage 
+									leftCapWidth:(CGFloat)leftCapWidth
+										   title:(NSString *)title
+											font:(UIFont *)font;
 
 @end

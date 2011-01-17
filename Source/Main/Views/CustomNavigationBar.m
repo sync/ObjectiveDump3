@@ -3,14 +3,13 @@
 @interface CustomNavigationBar () 
 
 @property (nonatomic, readonly) NSMutableDictionary *backgroundImagesDict;
-@property (nonatomic, readonly) NSMutableDictionary *backButtonBackgroundImagesDict;
 - (void)setupCustomInitialisation;
 
 @end
 
 @implementation CustomNavigationBar
 
-@synthesize backgroundImagesDict, backButtonBackgroundImagesDict;
+@synthesize backgroundImagesDict;
 
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 // Only when xibless (interface buildder)
@@ -73,40 +72,6 @@
 }
 
 #pragma mark -
-#pragma mark BackButtonBackgroundImage
-
-- (NSMutableDictionary *)backButtonBackgroundImagesDict
-{
-	if (!backButtonBackgroundImagesDict) {
-		backButtonBackgroundImagesDict = [[NSMutableDictionary alloc]init];
-	}
-	
-	return backButtonBackgroundImagesDict;
-}
-
-- (UIImage *)backButtonBackgroundImageForStyle:(UIBarStyle)aBarStyle
-{
-	return [self.backButtonBackgroundImagesDict objectForKey:[NSNumber numberWithInteger:aBarStyle]];
-}
-
-- (void)setBackButtonBackgroundImage:(UIImage *)backgroundImage forBarStyle:(UIBarStyle)aBarStyle
-{
-	if (backgroundImage) {
-		[self.backButtonBackgroundImagesDict setObject:backgroundImage forKey:[NSNumber numberWithInteger:aBarStyle]];
-	} else {
-		[self.backButtonBackgroundImagesDict removeObjectForKey:[NSNumber numberWithInteger:aBarStyle]];
-	}
-	
-	[self setNeedsDisplay];
-}
-
-- (void)clearBackButtonBackground
-{
-	[self.backButtonBackgroundImagesDict removeAllObjects];
-	[self setNeedsDisplay];
-}
-
-#pragma mark -
 #pragma mark Drawing
 
 - (void)drawRect:(CGRect)rect {
@@ -123,47 +88,42 @@
 #pragma mark Actions
 
 // Given the prpoer images and cap width, create a variable width back button
-- (UIBarButtonItem *)backButtonForBackground:(UIImage*)backgroundImage 
-							highlightedImage:(UIImage*)highlightedImage 
-								leftCapWidth:(CGFloat)leftCapWidth
-									  target:(id)target
-									  action:(SEL)action
++ (UIButton *)customBackButtonForBackgroundImage:(UIImage*)backgroundImage 
+								highlightedImage:(UIImage*)highlightedImage 
+									leftCapWidth:(CGFloat)leftCapWidth
+										   title:(NSString *)title
+											font:(UIFont *)font
 {
 	backgroundImage = [backgroundImage stretchableImageWithLeftCapWidth:leftCapWidth topCapHeight:0.0];
 	highlightedImage = [highlightedImage stretchableImageWithLeftCapWidth:leftCapWidth topCapHeight:0.0];
 
 	UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
 	
-	button.titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont smallSystemFontSize]];
-	button.titleLabel.textColor = [UIColor whiteColor];
-	button.titleLabel.shadowOffset = CGSizeMake(0,-1);
-	button.titleLabel.shadowColor = [UIColor darkGrayColor];
-	button.titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
 	button.titleEdgeInsets = UIEdgeInsetsMake(0, leftCapWidth, 0, 3.0);
-	button.frame = CGRectMake(0, 0, 0, backgroundImage.size.height);
+	button.titleLabel.font = (font) ? font : [UIFont boldSystemFontOfSize:[UIFont smallSystemFontSize]];
+	[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	button.titleLabel.shadowOffset = CGSizeMake(0,-1);
+	[button setTitleShadowColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+	button.titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
+	
 	[button setBackgroundImage:backgroundImage forState:UIControlStateNormal];
 	[button setBackgroundImage:highlightedImage forState:UIControlStateHighlighted];
 	
-	CGSize textSize = [self.topItem.title sizeWithFont:button.titleLabel.font];
+	CGSize textSize = [title sizeWithFont:button.titleLabel.font];
 	button.frame = CGRectMake(button.frame.origin.x, 
 							  button.frame.origin.y, 
-							  textSize.width + (leftCapWidth * 1.5), 
-							  button.frame.size.height);
+							  textSize.width + leftCapWidth + 3.0 + 5.0, 
+							  backgroundImage.size.height);
 	
-	[button setTitle:self.topItem.title forState:UIControlStateNormal];
+	[button setTitle:title forState:UIControlStateNormal];
 	
-	[button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-	
-	UIBarButtonItem *buttonItem = [[[UIBarButtonItem alloc]initWithCustomView:button]autorelease];
-	
-	return buttonItem;
+	return button;
 }
 
 #pragma mark -
 #pragma mark Dealloc
 
 - (void)dealloc {
-	[backButtonBackgroundImagesDict release];
 	[backgroundImagesDict release];
 	
     [super dealloc];

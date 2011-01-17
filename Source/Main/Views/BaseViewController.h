@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "MBProgressHUD.h"
 #import "BaseLoadingViewCenter.h"
-#import "CustomNavigationBar.h"
+#import "UINavigationController+CustomNavigationBar.h"
 
 @interface BaseViewController : UIViewController <BaseLoadingViewCenterDelegate, MBProgressHUDDelegate>{
 }
@@ -18,7 +18,5 @@
 
 @property (nonatomic, retain) MBProgressHUD *loadingView;
 @property (nonatomic, retain) MBProgressHUD *noResultsView;
-
-@property (nonatomic, readonly) CustomNavigationBar *customNavigationBar;
 
 @end
