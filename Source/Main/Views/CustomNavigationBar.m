@@ -3,7 +3,6 @@
 @interface CustomNavigationBar () 
 
 @property (nonatomic, readonly) NSMutableDictionary *backgroundImagesDict;
-- (void)setupCustomInitialisation;
 
 @end
 

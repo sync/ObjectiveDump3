@@ -2,6 +2,7 @@
 #import "MBProgressHUD.h"
 #import "BaseLoadingViewCenter.h"
 #import "UINavigationController+Custom.h"
+#import "UISearchDisplayController+Custom.h"
 
 @interface BaseViewController : UIViewController <BaseLoadingViewCenterDelegate, MBProgressHUDDelegate>{
 }

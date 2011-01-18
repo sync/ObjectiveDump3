@@ -1,12 +1,14 @@
-#import "CustomToolBar.h"
+#import "CustomSearchBar.h"
 
-@interface CustomToolBar () 
+@interface CustomSearchBar () 
 
 @property (nonatomic, readonly) NSMutableDictionary *backgroundImagesDict;
+- (void)updateBackground;
 
 @end
 
-@implementation CustomToolBar
+
+@implementation CustomSearchBar
 
 @synthesize backgroundImagesDict;
 
@@ -61,13 +63,24 @@
 		[self.backgroundImagesDict removeObjectForKey:[NSNumber numberWithInteger:aBarStyle]];
 	}
 	
-	[self setNeedsDisplay];
+	[self updateBackground];
 }
 
 - (void)clearBackground
 {
 	[self.backgroundImagesDict removeAllObjects];
-	[self setNeedsDisplay];
+	[self updateBackground];
+}
+
+- (void)updateBackground
+{
+	UIImage *backgroundImage = [self backgroundImageForStyle:self.barStyle];
+	if (backgroundImage) {
+		id background = [self.subviews objectAtIndex:0];
+		if ([background respondsToSelector:@selector(setBackgroundImage:)]) {
+			[background performSelector:@selector(setBackgroundImage:) withObject:backgroundImage];
+		}
+	}
 }
 
 #pragma mark -

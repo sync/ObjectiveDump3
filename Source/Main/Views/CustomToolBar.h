@@ -13,4 +13,6 @@
 - (void)setBackgroundImage:(UIImage *)backgroundImage forBarStyle:(UIBarStyle)aBarStyle;
 - (void)clearBackground;
 
+- (void)setupCustomInitialisation;
+
 @end

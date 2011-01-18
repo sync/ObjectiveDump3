@@ -19,4 +19,6 @@
 										   title:(NSString *)title
 											font:(UIFont *)font;
 
+- (void)setupCustomInitialisation;
+
 @end
