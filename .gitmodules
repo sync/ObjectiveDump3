@@ -31,3 +31,6 @@
 [submodule "Source/External/UIColor-i7HexColor"]
 	path = Source/External/UIColor-i7HexColor
 	url = https://github.com/jonasschnelli/UIColor-i7HexColor.git
+[submodule "Source/External/modelobject"]
+	path = Source/External/modelobject
+	url = git://github.com/nfarina/modelobject.git
