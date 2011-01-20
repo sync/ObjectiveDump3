@@ -34,3 +34,6 @@
 [submodule "Source/External/modelobject"]
 	path = Source/External/modelobject
 	url = git://github.com/nfarina/modelobject.git
+[submodule "Source/External/nsdate-helper"]
+	path = Source/External/nsdate-helper
+	url = git://github.com/billymeltdown/nsdate-helper.git
