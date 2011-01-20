@@ -8,6 +8,9 @@
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 - (void)setupDataSource;
 
+- (BOOL)isIndexPathLastRow:(NSIndexPath *)indexPath;
+- (BOOL)isIndexPathSingleRow:(NSIndexPath *)indexPath;
+
 // Content Filtering
 @property (nonatomic, copy) NSString *searchString;
 - (void)setupSearchDataSource;

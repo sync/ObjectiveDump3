@@ -57,6 +57,16 @@
 #pragma mark -
 #pragma mark tableView Delegate
 
+- (BOOL)isIndexPathLastRow:(NSIndexPath *)indexPath
+{
+	return ([self.tableView numberOfRowsInSection:indexPath.section] - 1 == indexPath.row);
+}
+
+- (BOOL)isIndexPathSingleRow:(NSIndexPath *)indexPath
+{
+	return ([self.tableView numberOfRowsInSection:indexPath.section] == 1);
+}
+
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 	
