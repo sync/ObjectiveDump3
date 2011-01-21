@@ -37,3 +37,6 @@
 [submodule "Source/External/nsdate-helper"]
 	path = Source/External/nsdate-helper
 	url = git://github.com/billymeltdown/nsdate-helper.git
+[submodule "Source/External/NSAttributedString-Additions-for-HTML"]
+	path = Source/External/NSAttributedString-Additions-for-HTML
+	url = git://github.com/Cocoanetics/NSAttributedString-Additions-for-HTML.git
