@@ -40,3 +40,6 @@
 [submodule "Source/External/NSAttributedString-Additions-for-HTML"]
 	path = Source/External/NSAttributedString-Additions-for-HTML
 	url = git://github.com/Cocoanetics/NSAttributedString-Additions-for-HTML.git
+[submodule "OHAttributedLabel"]
+	path = OHAttributedLabel
+	url = git://github.com/AliSoftware/OHAttributedLabel.git
