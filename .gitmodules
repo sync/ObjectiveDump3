@@ -34,6 +34,6 @@
 [submodule "Source/External/modelobject"]
 	path = Source/External/modelobject
 	url = git://github.com/nfarina/modelobject.git
-[submodule "OHAttributedLabel"]
-	path = OHAttributedLabel
+[submodule "Source/External/OHAttributedLabel"]
+	path = Source/External/OHAttributedLabel
 	url = git://github.com/AliSoftware/OHAttributedLabel.git
