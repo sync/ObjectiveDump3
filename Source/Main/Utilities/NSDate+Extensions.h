@@ -4,5 +4,6 @@
 
 + (NSString *)stringForDisplayFromDate:(NSDate *)date;
 + (NSString *)stringForDisplayFromDate:(NSDate *)date prefixed:(BOOL)prefixed;
++ (NSString *)stringForDisplayFromDate:(NSDate *)date prefixed:(BOOL)prefixed alwaysShowTime:(BOOL)showTime;
 
 @end
