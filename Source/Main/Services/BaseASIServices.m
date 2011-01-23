@@ -91,7 +91,8 @@
 #pragma mark -
 #pragma mark Dealloc
 
-- (void)dealloc {
+- (void)dealloc 
+{
 	[networkQueue release];
 	
     [super dealloc];

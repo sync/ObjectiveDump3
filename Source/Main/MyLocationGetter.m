@@ -78,7 +78,8 @@
 #pragma mark -
 #pragma mark dealloc
 
-- (void)dealloc {
+- (void)dealloc 
+{
 	[locationManager release];
 	
 	[super dealloc];

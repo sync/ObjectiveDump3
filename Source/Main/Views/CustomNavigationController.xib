@@ -12,7 +12,6 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -67,7 +66,6 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUIViewController" id="1069408790">
 						<object class="IBUINavigationItem" key="IBUINavigationItem" id="534820231">
-							<reference key="IBUINavigationBar"/>
 							<string key="IBUITitle">Root View Controller</string>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
@@ -164,7 +162,7 @@
 					<string>CustomNavigationBar</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>CustomToolBar</string>
+					<string>CustomToolbar</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -197,11 +195,11 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">CustomToolBar</string>
+					<string key="className">CustomToolbar</string>
 					<string key="superclassName">UIToolbar</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Source/External/ObjectiveDump3/Source/Main/Views/CustomToolBar.h</string>
+						<string key="majorKey">IBUserSource</string>
+						<string key="minorKey"/>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

@@ -88,7 +88,8 @@
 }
 
 
-- (void)dealloc {
+- (void)dealloc 
+{
     [_imageView release];
 	
 	[super dealloc];

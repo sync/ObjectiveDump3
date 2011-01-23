@@ -21,15 +21,15 @@
 }
 
 #pragma mark -
-#pragma mark CustomToolBar
+#pragma mark CustomToolbar
 
-- (CustomToolBar *)customToolBar
+- (CustomToolbar *)customToolbar
 {
-	if (![self.toolbar isKindOfClass:[CustomToolBar class]]) {
+	if (![self.toolbar isKindOfClass:[CustomToolbar class]]) {
 		return nil;
 	}
 	
-	return (CustomToolBar *)self.toolbar;
+	return (CustomToolbar *)self.toolbar;
 }
 
 @end

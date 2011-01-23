@@ -197,7 +197,8 @@
 #pragma mark -
 #pragma mark Dealloc
 
-- (void)dealloc {
+- (void)dealloc 
+{
 	[request release];
 	[webView release];
 	

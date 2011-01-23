@@ -1,14 +1,17 @@
-#import "CustomToolBar.h"
+#import "CustomToolbar.h"
 
-@interface CustomToolBar () 
+@interface CustomToolbar () 
 
 @property (nonatomic, readonly) NSMutableDictionary *backgroundImagesDict;
+@property (nonatomic, readonly) NSMutableDictionary *shadowImagesDict;
+- (void)setupShadow;
+@property (nonatomic, readonly) UIImageView *shadowImageView;
 
 @end
 
-@implementation CustomToolBar
+@implementation CustomToolbar
 
-@synthesize backgroundImagesDict;
+@synthesize backgroundImagesDict, shadowImagesDict, shadowImageView;
 
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 // Only when xibless (interface buildder)
@@ -33,7 +36,7 @@
 - (void)setupCustomInitialisation
 {
 	// Initialization code
-	// Nothing
+	self.clipsToBounds = FALSE;
 }
 
 #pragma mark -
@@ -71,9 +74,69 @@
 }
 
 #pragma mark -
+#pragma mark ShadowImage
+
+- (NSMutableDictionary *)shadowImagesDict
+{
+	if (!shadowImagesDict) {
+		shadowImagesDict = [[NSMutableDictionary alloc]init];
+	}
+	
+	return shadowImagesDict;
+}
+
+- (UIImageView *)shadowImageView
+{
+	if (!shadowImageView) {
+		shadowImageView = [[[UIImageView alloc]initWithFrame:CGRectZero]autorelease];
+		shadowImageView.userInteractionEnabled = FALSE;
+		[self addSubview:shadowImageView];
+	}
+	
+	return shadowImageView;
+}
+
+- (UIImage *)shadowImageForStyle:(UIBarStyle)aBarStyle
+{
+	return [self.shadowImagesDict objectForKey:[NSNumber numberWithInteger:aBarStyle]];
+}
+
+- (void)setShadowImage:(UIImage *)shadowImage forBarStyle:(UIBarStyle)aBarStyle;
+{
+	if (shadowImage) {
+		[self.shadowImagesDict setObject:shadowImage forKey:[NSNumber numberWithInteger:aBarStyle]];
+	} else {
+		[self.shadowImagesDict removeObjectForKey:[NSNumber numberWithInteger:aBarStyle]];
+	}
+	
+	[self setupShadow];
+}
+
+- (void)clearShadow
+{
+	[self.shadowImagesDict removeAllObjects];
+	[self setupShadow];
+}
+
+#pragma mark -
 #pragma mark Drawing
 
-- (void)drawRect:(CGRect)rect {
+- (void)setupShadow
+{
+	UIImage *shadowImage = [self shadowImageForStyle:self.barStyle];
+	if (shadowImage) {
+		CGSize boundsSize = self.bounds.size;
+		CGRect rect = CGRectMake(0.0, 
+								 -shadowImage.size.height,
+								 boundsSize.width,
+								 shadowImage.size.height);
+		self.shadowImageView.image = shadowImage;
+		self.shadowImageView.frame = rect;
+	}
+}
+
+- (void)drawRect:(CGRect)rect 
+{
     // Drawing code.
 	UIImage *backgroundImage = [self backgroundImageForStyle:self.barStyle];
 	if (backgroundImage) {
@@ -86,7 +149,9 @@
 #pragma mark -
 #pragma mark Dealloc
 
-- (void)dealloc {
+- (void)dealloc 
+{
+	[shadowImagesDict release];
 	[backgroundImagesDict release];
 	
     [super dealloc];

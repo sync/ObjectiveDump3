@@ -128,7 +128,8 @@
  */
 
 
-- (void)dealloc {
+- (void)dealloc 
+{
 	[tableView release];
 	[searchString release];
 	

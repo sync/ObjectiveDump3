@@ -179,7 +179,8 @@
     return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 
-- (void)dealloc {
+- (void)dealloc 
+{
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 
 	noResultsView.delegate = nil;

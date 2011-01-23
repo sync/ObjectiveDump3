@@ -86,7 +86,8 @@
 #pragma mark -
 #pragma mark Drawing
 
-- (void)drawRect:(CGRect)rect {
+- (void)drawRect:(CGRect)rect 
+{
     // Drawing code.
 	UIImage *backgroundImage = [self backgroundImageForStyle:self.barStyle];
 	if (backgroundImage) {
@@ -99,7 +100,8 @@
 #pragma mark -
 #pragma mark Dealloc
 
-- (void)dealloc {
+- (void)dealloc 
+{
 	[backgroundImagesDict release];
 	
     [super dealloc];

@@ -5,13 +5,17 @@
 // some code from:
 // http://idevrecipes.com/2011/01/12/how-do-iphone-apps-instagramreederdailybooth-implement-custom-navigationbar-with-variable-width-back-buttons/
 
-@interface CustomToolBar : UIToolbar {
+@interface CustomToolbar : UIToolbar {
 
 }
 
 - (UIImage *)backgroundImageForStyle:(UIBarStyle)barStyle;
 - (void)setBackgroundImage:(UIImage *)backgroundImage forBarStyle:(UIBarStyle)aBarStyle;
 - (void)clearBackground;
+
+- (UIImage *)shadowImageForStyle:(UIBarStyle)barStyle;
+- (void)setShadowImage:(UIImage *)shadowImage forBarStyle:(UIBarStyle)aBarStyle;
+- (void)clearShadow;
 
 - (void)setupCustomInitialisation;
 
