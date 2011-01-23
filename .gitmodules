@@ -37,3 +37,6 @@
 [submodule "Source/External/OHAttributedLabel"]
 	path = Source/External/OHAttributedLabel
 	url = git://github.com/AliSoftware/OHAttributedLabel.git
+[submodule "Source/External/MapKit-Route-Directions"]
+	path = Source/External/MapKit-Route-Directions
+	url = git://github.com/kishikawakatsumi/MapKit-Route-Directions.git
