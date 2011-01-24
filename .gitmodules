@@ -40,3 +40,6 @@
 [submodule "Source/External/MapKit-Route-Directions"]
 	path = Source/External/MapKit-Route-Directions
 	url = git://github.com/sync/MapKit-Route-Directions.git
+[submodule "MapKit-Route-Directions"]
+	path = MapKit-Route-Directions
+	url = git://github.com/sync/MapKit-Route-Directions
