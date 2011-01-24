@@ -39,4 +39,4 @@
 	url = git://github.com/AliSoftware/OHAttributedLabel.git
 [submodule "Source/External/MapKit-Route-Directions"]
 	path = Source/External/MapKit-Route-Directions
-	url = git://github.com/kishikawakatsumi/MapKit-Route-Directions.git
+	url = git://github.com/sync/MapKit-Route-Directions.git
