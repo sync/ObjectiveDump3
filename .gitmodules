@@ -40,3 +40,6 @@
 [submodule "Source/External/UIColor-i7HexColor"]
 	path = Source/External/UIColor-i7HexColor
 	url = git://github.com/sync/UIColor-i7HexColor.git
+[submodule "Source/External/tapkulibrary"]
+	path = Source/External/tapkulibrary
+	url = git://github.com/sync/tapkulibrary.git
