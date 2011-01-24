@@ -34,3 +34,9 @@
 [submodule "Source/External/MapKit-Route-Directions"]
 	path = Source/External/MapKit-Route-Directions
 	url = git://github.com/sync/MapKit-Route-Directions
+[submodule "Source/External/OHAttributedLabel"]
+	path = Source/External/OHAttributedLabel
+	url = git://github.com/sync/OHAttributedLabel.git
+[submodule "Source/External/UIColor-i7HexColor"]
+	path = Source/External/UIColor-i7HexColor
+	url = git://github.com/sync/UIColor-i7HexColor.git
