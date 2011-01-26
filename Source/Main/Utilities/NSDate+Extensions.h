@@ -6,4 +6,6 @@
 + (NSString *)stringForDisplayFromDate:(NSDate *)date prefixed:(BOOL)prefixed;
 + (NSString *)stringForDisplayFromDate:(NSDate *)date prefixed:(BOOL)prefixed alwaysShowTime:(BOOL)showTime;
 
+- (NSString *)getUTCDateWithformat:(NSString *)format;
+
 @end

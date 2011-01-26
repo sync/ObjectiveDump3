@@ -61,4 +61,16 @@
 	return displayString;
 }
 
+//http://stackoverflow.com/questions/2615833/objective-c-setting-nsdate-to-current-utc
+
+- (NSString *)getUTCDateWithformat:(NSString *)format
+{
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init]autorelease];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:format];
+    NSString *dateString = [dateFormatter stringFromDate:self];
+    return dateString;
+}
+
 @end
