@@ -43,3 +43,6 @@
 [submodule "Source/External/tapkulibrary"]
 	path = Source/External/tapkulibrary
 	url = git://github.com/sync/tapkulibrary.git
+[submodule "Source/External/TISwipeableTableView.git"]
+	path = Source/External/TISwipeableTableView.git
+	url = git://github.com/thermogl/TISwipeableTableView.git
