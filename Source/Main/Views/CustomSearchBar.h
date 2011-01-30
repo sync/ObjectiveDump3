@@ -11,4 +11,6 @@
 
 - (void)setupCustomInitialisation;
 
+@property(nonatomic) UIKeyboardAppearance keyboardAppearance;
+
 @end

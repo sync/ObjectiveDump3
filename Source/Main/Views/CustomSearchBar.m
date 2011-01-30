@@ -97,6 +97,26 @@
 	}
 }
 
+- (UIKeyboardAppearance)keyboardAppearance
+{
+	for(UIView *subView in self.subviews) {
+		if([subView isKindOfClass: [UITextField class]]) {
+			return [(UITextField *)subView keyboardAppearance];
+		}
+	}
+	
+	return UIKeyboardAppearanceDefault;
+}	
+
+- (void)setKeyboardAppearance:(UIKeyboardAppearance)keyboardAppearance
+{
+	for(UIView *subView in self.subviews) {
+		if([subView isKindOfClass: [UITextField class]]) {
+			[(UITextField *)subView setKeyboardAppearance: UIKeyboardAppearanceAlert];
+		}
+	}
+}
+
 #pragma mark -
 #pragma mark Dealloc
 

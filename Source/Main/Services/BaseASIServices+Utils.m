@@ -3,36 +3,6 @@
 @implementation BaseASIServices (utils)
 
 #pragma mark -
-#pragma mark Request Constructors
-
-- (ASIHTTPRequest *)requestWithUrl:(NSString *)url
-{
-	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-	request.numberOfTimesToRetryOnTimeout = 1;
-	request.timeOutSeconds = RequestTimeOutSeconds;
-	
-	request.allowCompressedResponse = TRUE;
-	
-	return request;
-}
-
-- (ASIFormDataRequest *)formRequestWithUrl:(NSString *)url
-{
-	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:url]];
-	request.numberOfTimesToRetryOnTimeout = 2;
-	request.timeOutSeconds = RequestTimeOutSeconds;
-	[request setRequestMethod:@"POST"];
-	
-	request.allowCompressedResponse = TRUE;
-	
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_4_0
-	[request setShouldContinueWhenAppEntersBackground:YES];
-#endif
-	
-	return request;
-}
-
-#pragma mark -
 #pragma mark Request Status
 
 #define BaseServicesNotificationUnknown @"BaseServicesNotificationUnknown"

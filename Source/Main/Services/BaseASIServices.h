@@ -15,6 +15,9 @@
 
 @property (nonatomic, readonly) ASINetworkQueue *networkQueue;
 
+- (ASIHTTPRequest *)requestWithUrl:(NSString *)url;
+- (ASIFormDataRequest *)formRequestWithUrl:(NSString *)url;
+
 - (void)downloadContentForUrl:(NSString *)url withObject:(id)object path:(NSString *)path notificationName:(NSString *)notificationName;
 
 @end

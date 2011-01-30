@@ -54,13 +54,13 @@
 	
 	[[BaseLoadingViewCenter sharedBaseLoadingViewCenter]didStopLoadingForKey:GPSLocationFinding];
 	
-	NSDate* eventDate = newLocation.timestamp;
-	NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-	if (howRecent <= -(5.0))
-	{
-		// If it is too recent don't care
-		return;
-	}
+//	NSDate* eventDate = newLocation.timestamp;
+//	NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+//	if (howRecent <= -(5.0))
+//	{
+//		// If it is too recent don't care
+//		return;
+//	}
 	
 	// Tell everyone that gps got a fix
 	[[NSNotificationCenter defaultCenter] postNotificationName:GPSLocationDidFix object:nil userInfo:nil];
