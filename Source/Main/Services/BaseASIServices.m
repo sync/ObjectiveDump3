@@ -5,6 +5,22 @@
 
 @synthesize networkQueue;
 
+- (id) init
+{
+	self = [super init];
+	if (self != nil) {
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive) name:UIApplicationWillResignActiveNotification object:nil];
+
+	}
+	return self;
+}
+
+- (void)applicationWillResignActive
+{
+	
+}
+
+
 - (ASINetworkQueue *)networkQueue
 {
 	if (!networkQueue) {
@@ -89,20 +105,14 @@
 
 - (void)fetchCompleted:(ASIHTTPRequest *)request
 {
-	NSError *error = request.error;
-	if (error) {
-		DLog(@"wserror: %@", error);
-		[[BaseLoadingViewCenter sharedBaseLoadingViewCenter]showErrorMsg:[error localizedDescription] forKey:[self notificationNameForRequest:request]];
-	} else {
-		NSDictionary *info = request.userInfo;
-		NSString *path = [info valueForKey:@"path"];
-		
-		if ([path isEqualToString:@"blah"]) {
-			// parseBlah
-		}
+	NSDictionary *info = request.userInfo;
+	NSString *path = [info valueForKey:@"path"];
+	
+	if ([path isEqualToString:@"blah"]) {
+		// parseBlah
 	}
 	
-	DLog(@"fetch completed for url:%@ error:%@", request.originalURL, [request.error localizedDescription]);
+	DLog(@"fetch completed for url:%@", request.originalURL);
 }
 
 - (void)fetchFailed:(ASIHTTPRequest *)request
@@ -123,6 +133,9 @@
 
 - (void)dealloc 
 {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+
+	
 	[networkQueue release];
 	
     [super dealloc];

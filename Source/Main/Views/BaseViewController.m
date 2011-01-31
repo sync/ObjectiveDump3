@@ -44,6 +44,13 @@
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationDidFix) name:GPSLocationDidFix object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationDidStop) name:GPSLocationDidStop object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
+}
+
+- (void)setTitle:(NSString *)aTitle
+{
+	[super setTitle:aTitle];
+	[self setupNavigationBar];
 }
 
 #pragma mark -
@@ -152,6 +159,14 @@
 }
 
 - (void)locationDidStop
+{
+	
+}
+
+#pragma mark -
+#pragma mark ResumeFromBackgrounding
+
+- (void)applicationDidBecomeActive
 {
 	
 }

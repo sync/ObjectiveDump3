@@ -15,6 +15,8 @@
 
 @property (nonatomic, readonly) ASINetworkQueue *networkQueue;
 
+- (void)applicationWillResignActive;
+
 - (ASIHTTPRequest *)requestWithUrl:(NSString *)url;
 - (ASIFormDataRequest *)formRequestWithUrl:(NSString *)url;
 
