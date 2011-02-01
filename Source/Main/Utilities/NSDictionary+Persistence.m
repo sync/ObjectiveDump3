@@ -47,7 +47,7 @@
 	NSString *path = [[self applicationDocumentsDirectory] stringByAppendingPathComponent:key];
 	
 	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-	if(data.length > 0) {
+	if(data.length > 0 && self.count != 0) {
 		[data writeToFile:path atomically:NO];
 	} else {
 		NSFileManager *manager = [NSFileManager defaultManager];

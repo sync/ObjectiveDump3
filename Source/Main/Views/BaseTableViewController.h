@@ -12,7 +12,7 @@
 - (BOOL)isIndexPathSingleRow:(NSIndexPath *)indexPath;
 
 // Content Filtering
-@property (nonatomic, copy) NSString *searchString;
+@property (nonatomic, retain) NSString *searchString;
 - (void)setupSearchDataSource;
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope;
 
