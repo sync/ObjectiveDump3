@@ -47,7 +47,7 @@
 	NSString *path = [[self applicationDocumentsDirectory] stringByAppendingPathComponent:key];
 	
 	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-	if(data.length > 0 && self.count != 0) {
+	if(data.length > 0) {
 		[data writeToFile:path atomically:NO];
 	} else {
 		NSFileManager *manager = [NSFileManager defaultManager];
@@ -55,5 +55,26 @@
 	}
 }
 
+- (void)setObjectUnderArray:(id)object forKey:(NSString *)key
+{
+	NSMutableArray *array = [NSMutableArray arrayWithArray:[self valueForKey:key]];
+	NSInteger idx = [array indexOfObject:object];
+	if (idx != NSNotFound) {
+		[array replaceObjectAtIndex:idx withObject:object];
+	} else {
+		[array addObject:object];
+	}
+	[self setValue:array forKey:key];
+}
+
+- (void)removeObjectUnderArray:(id)object forKey:(NSString *)key
+{
+	NSMutableArray *array = [NSMutableArray arrayWithArray:[self valueForKey:key]];
+	NSInteger idx = [array indexOfObject:object];
+	if (idx != NSNotFound) {
+		[array removeObjectAtIndex:idx];
+	}
+	[self setValue:array forKey:key];
+}
 
 @end

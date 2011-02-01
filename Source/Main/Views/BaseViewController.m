@@ -1,5 +1,4 @@
 #import "BaseViewController.h"
-#import "Reachability.h"
 
 @implementation BaseViewController
 
@@ -50,7 +49,14 @@
 - (void)setTitle:(NSString *)aTitle
 {
 	[super setTitle:aTitle];
-	[self setupNavigationBar];
+	
+	if ([self.navigationItem.titleView respondsToSelector:@selector(setText:)]) {
+		[self.navigationItem.titleView performSelector:@selector(setText:) withObject:aTitle];
+		if ([self.navigationItem.titleView respondsToSelector:@selector(sizeToFit)]) {
+			[self.navigationItem.titleView performSelector:@selector(sizeToFit)];
+		}
+		
+	}
 }
 
 #pragma mark -

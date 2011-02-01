@@ -8,7 +8,9 @@
 - (id)initWitChoicesList:(NSArray *)choicesList
 {
     if ((self = [super init])) {
-        [self.content addObjectsFromArray:choicesList];
+		if (choicesList.count > 0) {
+			 [self.content addObjectsFromArray:choicesList];
+		}
     }
     return self;
 }
