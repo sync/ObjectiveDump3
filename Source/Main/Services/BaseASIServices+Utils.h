@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "BaseASIServices.h"
 #import "BaseASIServices+Utils.h"
 
 @interface BaseASIServices (utils)

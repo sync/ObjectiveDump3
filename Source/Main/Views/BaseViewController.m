@@ -1,4 +1,5 @@
 #import "BaseViewController.h"
+#import "MyLocationGetter.h"
 
 @implementation BaseViewController
 
