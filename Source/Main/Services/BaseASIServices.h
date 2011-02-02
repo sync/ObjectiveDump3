@@ -8,7 +8,6 @@
 #import "NSObject+JSONSerializableSupport.h"
 #import "ObjectiveResourceDateFormatter.h"
 
-
 @interface BaseASIServices : NSObject {
 	
 }

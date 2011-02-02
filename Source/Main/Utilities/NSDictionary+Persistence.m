@@ -3,12 +3,6 @@
 
 @implementation NSDictionary (Persistence)
 
-#pragma mark -
-#pragma mark Application's Documents directory
-
-/**
- Returns the path to the application's Documents directory.
- */
 - (NSString *)applicationDocumentsDirectory 
 {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
