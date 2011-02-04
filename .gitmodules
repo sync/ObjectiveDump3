@@ -37,9 +37,6 @@
 [submodule "Source/External/tapkulibrary"]
 	path = Source/External/tapkulibrary
 	url = git://github.com/sync/tapkulibrary.git
-[submodule "Source/External/TISwipeableTableView.git"]
-	path = Source/External/TISwipeableTableView.git
-	url = git://github.com/thermogl/TISwipeableTableView.git
 [submodule "Source/External/scifihifi-iphone"]
 	path = Source/External/scifihifi-iphone
 	url = git://github.com/ldandersen/scifihifi-iphone.git
@@ -49,3 +46,6 @@
 [submodule "Source/External/EGOTableViewPullRefresh"]
 	path = Source/External/EGOTableViewPullRefresh
 	url = git://github.com/sync/EGOTableViewPullRefresh.git
+[submodule "Source/External/TISwipeableTableView"]
+	path = Source/External/TISwipeableTableView
+	url = git://github.com/thermogl/TISwipeableTableView.git
