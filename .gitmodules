@@ -46,3 +46,6 @@
 [submodule "Source/External/scifihifi-iphone"]
 	path = Source/External/scifihifi-iphone
 	url = git://github.com/ldandersen/scifihifi-iphone.git
+[submodule "Source/External/modelobject"]
+	path = Source/External/modelobject
+	url = git://github.com/sync/modelobject.git
