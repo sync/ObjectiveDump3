@@ -28,9 +28,6 @@
 [submodule "Source/External/EGOTableViewPullRefresh"]
 	path = Source/External/EGOTableViewPullRefresh
 	url = git://github.com/enormego/EGOTableViewPullRefresh.git
-[submodule "Source/External/modelobject"]
-	path = Source/External/modelobject
-	url = git://github.com/nfarina/modelobject.git
 [submodule "Source/External/MapKit-Route-Directions"]
 	path = Source/External/MapKit-Route-Directions
 	url = git://github.com/sync/MapKit-Route-Directions
