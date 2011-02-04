@@ -8,7 +8,9 @@
 + (NSDictionary *)savedDictForKey:(NSString *)key;
 - (void)saveDictForKey:(NSString *)key;
 
-- (void)setObjectUnderArray:(id)object forKey:(NSString *)key;
-- (void)removeObjectUnderArray:(id)object forKey:(NSString *)key;
+- (id)objectUnderArray:(id)object forPathToId:(NSString *)pathToId forKey:(NSString *)key;
+- (id)filteredObjectsUnderArray:(id)object forPath:(NSString *)path forKey:(NSString *)key;
+- (void)setObjectUnderArray:(id)object forPathToId:(NSString *)pathToId forKey:(NSString *)key;
+- (void)removeObjectUnderArray:(id)object forPathToId:(NSString *)pathToId forKey:(NSString *)key;
 
 @end

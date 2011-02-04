@@ -12,7 +12,8 @@
 // Only when xibless (interface buildder)
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
 {
-	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+	self =  [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
 		// Custom initialization
 		[self setupCustomInitialisation];
 	}
@@ -23,7 +24,8 @@
 // Only when using xib (interface buildder)
 - (id)initWithCoder:(NSCoder *)decoder 
 {
-	if (self = [super initWithCoder:decoder]) {
+	self = [super initWithCoder:decoder];
+    if (self) {
 		// Custom initialization
 		[self setupCustomInitialisation];
 	}
