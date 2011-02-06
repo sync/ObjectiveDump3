@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "OAuth.h"
+#import "TwitterLoginPopupDelegate.h"
+#import "TwitterLoginUiFeedback.h"
 #import "CustomLoginPopup.h"
 
 #define TwitterNotification @"TwitterDidLoginNotification"
