@@ -4,7 +4,7 @@
 #define FacebookNotification @"FacebookNotification"
 #define FacebookAuthorizedPermissionsUserDefaults @"FacebookAuthorizedPermissionsUserDefaults"
 
-#if !FacebookApplicationId
+#if !defined(FacebookApplicationId)
 #define FacebookApplicationId @"your_key_here"
 #endif
 

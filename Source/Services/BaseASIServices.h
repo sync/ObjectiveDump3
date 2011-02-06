@@ -5,7 +5,7 @@
 #import "BaseLoadingViewCenter.h"
 
 
-#if !RequestTimeOutSeconds
+#if !defined(RequestTimeOutSeconds)
 #define  RequestTimeOutSeconds 45.0
 #endif
 
