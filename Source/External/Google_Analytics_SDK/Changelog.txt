@@ -1,6 +1,0 @@
-iPhone Analytics SDK Changelog
-
---------------------------------------------
-Version: 1.0 (July, 2010)
---------------------------------------------
-* iOS4 support for iPhone-Analytics.
