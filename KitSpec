@@ -1,6 +1,6 @@
 name: ObjectiveDump3
 version: 3.0
-source-directory: Classes
+source-directory: Source
 dependencies:
   - asi-http-request: 1.8
   - json-framework: 3.0beta1

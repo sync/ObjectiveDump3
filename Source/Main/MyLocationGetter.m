@@ -1,4 +1,5 @@
 #import "MyLocationGetter.h"
+#import "BaseLoadingViewCenter.h"
 
 @implementation MyLocationGetter
 
