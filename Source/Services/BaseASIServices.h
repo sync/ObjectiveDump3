@@ -3,10 +3,9 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 #import "BaseLoadingViewCenter.h"
-#import "JSON.h"
-#import "NSObject+Extensions.h"
-#import "NSObject+JSONSerializableSupport.h"
-#import "ObjectiveResourceDateFormatter.h"
+
+
+#define RequestTimeOutSeconds 45.0
 
 @interface BaseASIServices : NSObject {
 	

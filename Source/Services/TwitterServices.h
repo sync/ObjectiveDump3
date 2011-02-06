@@ -7,6 +7,9 @@
 #define TwitterNotification @"TwitterDidLoginNotification"
 #define TwitterAuthorizedUserDefaults @"TwitterAuthorizedUserDefaults"
 
+#define OAUTH_CONSUMER_KEY @"your_key_here"
+#define OAUTH_CONSUMER_SECRET @"you_sercred_here"
+
 @interface TwitterServices : NSObject <TwitterLoginPopupDelegate, TwitterLoginUiFeedback> {
 
 }

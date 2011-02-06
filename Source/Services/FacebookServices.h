@@ -4,6 +4,8 @@
 #define FacebookNotification @"FacebookNotification"
 #define FacebookAuthorizedPermissionsUserDefaults @"FacebookAuthorizedPermissionsUserDefaults"
 
+#define FacebookApplicationId @"your_key_here"
+
 @interface FacebookServices : NSObject <FBSessionDelegate, UIAlertViewDelegate> {
 
 }
