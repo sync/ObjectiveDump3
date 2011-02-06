@@ -5,7 +5,9 @@
 #import "BaseLoadingViewCenter.h"
 
 
-#define RequestTimeOutSeconds 45.0
+#if !RequestTimeOutSeconds
+#define  RequestTimeOutSeconds 45.0
+#endif
 
 @interface BaseASIServices : NSObject {
 	
