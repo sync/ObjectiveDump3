@@ -1,0 +1,9 @@
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+	#import "SynthesizeSingleton.h"
+	#import <QuartzCore/QuartzCore.h>
+	#import "NSObject+Extensions.h"
+	#import "UIColor+i7HexColor.h"
+	#import "CustomNavigationController.h"
+#endif
