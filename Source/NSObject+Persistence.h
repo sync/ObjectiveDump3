@@ -1,9 +1,9 @@
 #import <Foundation/Foundation.h>
 
 
-@interface NSArray (Persistence)
+@interface NSObject (Persistence)
 
-+ (NSDictionary *)savedForKey:(NSString *)key;
++ (NSObject *)savedForKey:(NSString *)key;
 - (void)saveForKey:(NSString *)key;
 
 @end

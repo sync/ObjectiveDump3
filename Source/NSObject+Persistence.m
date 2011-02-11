@@ -8,7 +8,7 @@
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
-+ (id)savedForKey:(NSString *)key
++ (NSObject *)savedForKey:(NSString *)key
 {
 	if (!key) {
 		return nil;
