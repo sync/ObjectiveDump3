@@ -3,7 +3,7 @@
 
 @interface NSArray (Persistence)
 
-+ (NSDictionary *)savedArrayForKey:(NSString *)key;
-- (void)saveArrayForKey:(NSString *)key;
++ (NSDictionary *)savedForKey:(NSString *)key;
+- (void)saveForKey:(NSString *)key;
 
 @end
