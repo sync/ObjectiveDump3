@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "BaseTableViewDataSource.h"
 
-@interface ChoicesListDataSource : BaseTableViewDataSource <BaseTableViewDataSource> {
+@interface ChoicesListDataSource : BaseTableViewDataSource {
 
 }
 
