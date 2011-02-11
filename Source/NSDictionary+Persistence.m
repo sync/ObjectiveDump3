@@ -17,38 +17,6 @@
 	return dict;
 }
 
-+ (NSDictionary *)savedDictForKey:(NSString *)key
-{
-	if (!key) {
-		return nil;
-	}
-	
-	key = [key stringByAppendingString:@".plist"];
-	
-	NSString *applicationDocumentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-	
-	NSData *data = [NSData dataWithContentsOfFile:[applicationDocumentsDirectory stringByAppendingPathComponent:key]]; 
-	if(data.length == 0) {
-		return nil; 
-	}
-	
-	return [NSKeyedUnarchiver unarchiveObjectWithData:data];
-}
-
-- (void)saveDictForKey:(NSString *)key
-{
-	key = [key stringByAppendingString:@".plist"];
-	NSString *path = [[self applicationDocumentsDirectory] stringByAppendingPathComponent:key];
-	
-	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-	if(data.length > 0) {
-		[data writeToFile:path atomically:NO];
-	} else {
-		NSFileManager *manager = [NSFileManager defaultManager];
-		[manager removeItemAtPath:path error:nil];
-	}
-}
-
 - (id)objectUnderArray:(id)object forPathToId:(NSString *)pathToId forKey:(NSString *)key
 {
 	NSMutableArray *array = [NSMutableArray arrayWithArray:[self valueForKey:key]];

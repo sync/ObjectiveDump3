@@ -1,14 +1,14 @@
 #import "NSArray+Persistence.h"
 
 
-@implementation  NSArray (Persistence)
+@implementation  NSObject (Persistence)
 
 - (NSString *)applicationDocumentsDirectory 
 {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
-+ (NSDictionary *)savedArrayForKey:(NSString *)key
++ (id)savedForKey:(NSString *)key
 {
 	if (!key) {
 		return nil;
@@ -26,7 +26,7 @@
 	return [NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
-- (void)saveArrayForKey:(NSString *)key
+- (void)saveForKey:(NSString *)key
 {
 	key = [key stringByAppendingString:@".plist"];
 	NSString *path = [[self applicationDocumentsDirectory] stringByAppendingPathComponent:key];

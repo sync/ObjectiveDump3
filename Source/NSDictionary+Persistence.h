@@ -5,9 +5,6 @@
 
 + (NSDictionary *)dictionaryWithContent:(NSArray *)content date:(NSDate *)date;
 
-+ (NSDictionary *)savedDictForKey:(NSString *)key;
-- (void)saveDictForKey:(NSString *)key;
-
 - (id)objectUnderArray:(id)object forPathToId:(NSString *)pathToId forKey:(NSString *)key;
 - (id)filteredObjectsUnderArray:(id)object forPath:(NSString *)path forKey:(NSString *)key;
 - (void)setObjectUnderArray:(id)object forPathToId:(NSString *)pathToId forKey:(NSString *)key;
