@@ -1,6 +1,6 @@
 #import "BaseWebViewController.h"
 
-@interface BaseWebViewController (private)
+@interface BaseWebViewController ()
 
 - (void)doneButtonTouched;
 - (void)backButtonTouched;
