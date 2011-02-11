@@ -1,4 +1,4 @@
-#import "NSArray+Persistence.h"
+#import "NSObject+Persistence.h"
 
 
 @implementation  NSObject (Persistence)

@@ -2,7 +2,7 @@
 #import "TwitterServices.h"
 #import "FacebookServices.h"
 #import "NSDictionary+Persistence.h"
-#import "NSArray+Persistence.h"
+#import "NSObject+Persistence.h"
 #import "BaseASIServices+Utils.h"
 #import "BaseTableViewController.h"
 #import "CustomSearchBar.h"
