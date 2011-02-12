@@ -48,12 +48,18 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {		
-	[self.refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+	if ([scrollView isEqual:self.searchDisplayController.searchResultsTableView]) {
+        return;
+    }
+    [self.refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-	[self.refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+	if ([scrollView isEqual:self.searchDisplayController.searchResultsTableView]) {
+        return;
+    }
+    [self.refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
 }
 
 #pragma mark -
