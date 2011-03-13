@@ -38,7 +38,7 @@
 								[self notificationNameForRequest:request], @"notificationName",
 								object, @"object",
 								nil];
-	[self performSelectorOnMainThread:@selector(notifyDone:) withObject:dictionary waitUntilDone:NO];
+	[self performSelectorOnMainThread:@selector(notifyDone:) withObject:dictionary waitUntilDone:YES];
 }
 
 - (void)notifyFailed:(NSDictionary *)dictionary
@@ -56,7 +56,7 @@
 								[self notificationNameForRequest:request], @"notificationName",
 								errorString, @"errorString",
 								nil];
-	[self performSelectorOnMainThread:@selector(notifyFailed:) withObject:dictionary waitUntilDone:NO];
+	[self performSelectorOnMainThread:@selector(notifyFailed:) withObject:dictionary waitUntilDone:YES];
 }
 
 @end
