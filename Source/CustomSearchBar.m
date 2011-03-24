@@ -3,7 +3,7 @@
 @interface CustomSearchBar () 
 
 @property (nonatomic, readonly) NSMutableDictionary *backgroundImagesDict;
-- (void)updateBackground;
+@property (nonatomic, readonly) UIView *customBackgroundView;
 
 @end
 
@@ -65,24 +65,24 @@
 		[self.backgroundImagesDict removeObjectForKey:[NSNumber numberWithInteger:aBarStyle]];
 	}
 	
-	[self updateBackground];
+	[self setNeedsDisplay];
 }
 
 - (void)clearBackground
 {
 	[self.backgroundImagesDict removeAllObjects];
-	[self updateBackground];
+	[self setNeedsDisplay];
 }
 
-- (void)updateBackground
+- (UIView *)customBackgroundView
 {
-	UIImage *backgroundImage = [self backgroundImageForStyle:self.barStyle];
-	if (backgroundImage) {
-		id background = [self.subviews objectAtIndex:0];
-		if ([background respondsToSelector:@selector(setBackgroundImage:)]) {
-			[background performSelector:@selector(setBackgroundImage:) withObject:backgroundImage];
-		}
-	}
+    NSString *stringClass = [NSString stringWithFormat:@"UISearchBar%@", @"Background"];
+    for (UIView *view in self.subviews) {
+        if ([view isKindOfClass:NSClassFromString(stringClass)]) {
+            return view;
+        }
+    }
+    return nil;
 }
 
 #pragma mark -
@@ -93,9 +93,11 @@
     // Drawing code.
 	UIImage *backgroundImage = [self backgroundImageForStyle:self.barStyle];
 	if (backgroundImage) {
+        self.customBackgroundView.hidden = TRUE;
 		[backgroundImage drawInRect:rect];
 	} else {
-		[super drawRect:rect];
+		self.customBackgroundView.hidden = FALSE;
+        [super drawRect:rect];
 	}
 }
 
