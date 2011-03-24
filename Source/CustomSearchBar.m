@@ -12,6 +12,8 @@
 
 @synthesize backgroundImagesDict;
 
+#pragma mark - Init
+
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 // Only when xibless (interface buildder)
 - (id)initWithFrame:(CGRect)frame {
@@ -65,14 +67,16 @@
 		[self.backgroundImagesDict removeObjectForKey:[NSNumber numberWithInteger:aBarStyle]];
 	}
 	
-	[self setNeedsDisplay];
+	[self layoutSubviews];
 }
 
 - (void)clearBackground
 {
 	[self.backgroundImagesDict removeAllObjects];
-	[self setNeedsDisplay];
+	[self layoutSubviews];
 }
+
+#pragma mark - Background hax
 
 - (UIView *)customBackgroundView
 {
@@ -93,13 +97,20 @@
     // Drawing code.
 	UIImage *backgroundImage = [self backgroundImageForStyle:self.barStyle];
 	if (backgroundImage) {
-        self.customBackgroundView.hidden = TRUE;
-		[backgroundImage drawInRect:rect];
+        [backgroundImage drawInRect:rect];
 	} else {
-		self.customBackgroundView.hidden = FALSE;
         [super drawRect:rect];
 	}
 }
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
+    UIImage *backgroundImage = [self backgroundImageForStyle:self.barStyle];
+	self.customBackgroundView.hidden = (backgroundImage != nil);
+}
+
+#pragma mark - Keyboard
 
 - (UIKeyboardAppearance)keyboardAppearance
 {
